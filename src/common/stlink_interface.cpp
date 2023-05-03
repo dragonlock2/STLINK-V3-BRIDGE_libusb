@@ -63,6 +63,10 @@ STLinkInterface::STLinkInterface(STLink_EnumStlinkInterfaceT IfId)
 STLinkInterface::~STLinkInterface(void)
 {
     // critical section deletion not needed because static mutex
+    if (devs != nullptr) {
+        libusb_free_device_list(devs, 1);
+        devs = nullptr;
+    }
 
     // STLink_FreeLibrary();
     if (m_bApiDllLoaded) {
@@ -322,8 +326,12 @@ STLinkInterface::STLink_Reenumerate(TEnumStlinkInterface IfId,
         return SS_DEVICE_NOT_SUPPORTED;
     }
 
+    if (devs != nullptr) {
+        libusb_free_device_list(devs, 1);
+        devs = nullptr;
+    }
+
     uint32_t deviceCount = 0;
-    libusb_device **devs;
     ssize_t cnt; // holding number of devices in list
     cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
     if (cnt < 0) {
@@ -343,7 +351,6 @@ STLinkInterface::STLink_Reenumerate(TEnumStlinkInterface IfId,
             }
         }
     }
-    libusb_free_device_list(devs, 1);
     return SS_OK;
 }
 

@@ -116,6 +116,7 @@ class STLinkInterface
 #endif
 
   private:
+    libusb_device **devs = nullptr;
     libusb_context *ctx = nullptr; // a libusb session
     libusb_device *devices[256];
     ssize_t cnt;
