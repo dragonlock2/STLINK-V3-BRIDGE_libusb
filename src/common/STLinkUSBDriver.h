@@ -345,7 +345,7 @@ typedef uint32_t(STD_CALL *pSTMass_SendCommand)(PDevice pDevice, void *pHandle,
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_Reenumerate)(TEnumStlinkInterface IfId,
                                                 uint8_t bClearList);
@@ -359,7 +359,7 @@ STLink_Reenumerate(TEnumStlinkInterface IfId, uint8_t bClearList);
 // Returns the number of connected devices providing the given interface, that
 // have been enumerated with a previous call to STLink_Reenumerate.
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_GetNbDevices)(TEnumStlinkInterface IfId);
 #else
@@ -388,7 +388,7 @@ STLink_GetNbDevices(TEnumStlinkInterface IfId);
 //   SS_BAD_PARAMETER in case of unexpected values for IfId, DevIdxInList or
 //   pInfo
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_GetDeviceInfo)(TEnumStlinkInterface IfId,
                                                   uint8_t DevIdxInList,
@@ -423,7 +423,7 @@ STLink_GetDeviceInfo(TEnumStlinkInterface IfId, uint8_t DevIdxInList,
 //   SS_BAD_PARAMETER in case of unexpected values for IfId, DevIdxInList or
 //   pInfo
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_GetDeviceInfo2)(TEnumStlinkInterface IfId,
                                                    uint8_t DevIdxInList,
@@ -450,7 +450,7 @@ STLink_GetDeviceInfo2(TEnumStlinkInterface IfId, uint8_t DevIdxInList,
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_OpenDevice)(TEnumStlinkInterface IfId,
                                                uint8_t DevIdxInList,
@@ -470,7 +470,7 @@ STLink_OpenDevice(TEnumStlinkInterface IfId, uint8_t DevIdxInList,
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_CloseDevice)(void *pHandle);
 #else
@@ -488,7 +488,7 @@ STLink_CloseDevice(void *pHandle);
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_SendCommand)(void *pHandle,
                                                 PDeviceRequest pRequest,
@@ -510,7 +510,7 @@ STLink_SendCommand(void *pHandle, PDeviceRequest pRequest, uint32_t DwTimeOut);
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_ReenumerateTcp)(TEnumStlinkInterface IfId,
                                                    uint8_t bClearList,
@@ -538,7 +538,7 @@ STLink_ReenumerateTcp(TEnumStlinkInterface IfId, uint8_t bClearList,
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_OpenDeviceTcp)(TEnumStlinkInterface IfId,
                                                   uint32_t DevInfoUsbId,
@@ -560,7 +560,7 @@ STLink_OpenDeviceTcp(TEnumStlinkInterface IfId, uint32_t DevInfoUsbId,
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_CloseDeviceTcp)(uint32_t StLinkUsbId,
                                                    uint8_t closeTcp);
@@ -580,7 +580,7 @@ STLink_CloseDeviceTcp(uint32_t StLinkUsbId, uint8_t closeTcp);
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_SendCommandTcp)(uint32_t StLinkUsbId,
                                                    PDeviceRequest pRequest,
@@ -598,7 +598,7 @@ STLink_SendCommandTcp(uint32_t StLinkUsbId, PDeviceRequest pRequest,
 // returns 0 if given device is currently not opened by any TCP client or if
 // device is not found.
 //******************************************************************************
-#ifdef WIN32
+#ifdef _WIN32
 // Export the signature only; the routine will be linked through GetProcAdddress
 typedef uint32_t(STD_CALL *pSTLink_GetNumOfDeviceClientsTcp)(
     uint32_t StLinkUsbId);
@@ -616,7 +616,7 @@ STLink_GetNumOfDeviceClientsTcp(uint32_t StLinkUsbId);
 //
 // Returns: SS_OK  = SUCCESS, Error otherwise (Error Code)
 //******************************************************************************
-#ifndef WIN32
+#ifndef _WIN32
 EXPORTED_API uint32_t STD_CALL
 STLink_FreeLibrary(void);
 #endif

@@ -20,7 +20,7 @@
 #ifndef _STLINK_TYPE_H
 #define _STLINK_TYPE_H
 
-#ifdef WIN32 // Defined for applications for Win32 and Win64.
+#ifdef _WIN32 // Defined for applications for Win32 and Win64.
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
@@ -48,7 +48,7 @@ typedef unsigned int uint32_t;
 
 #define EXPORTED_API extern "C"
 
-#else // !WIN32: Linux/MacOS
+#else // !_WIN32: Linux/MacOS
 #include "limits.h"
 #include "time.h"
 #include <stdint.h>
@@ -70,7 +70,7 @@ typedef unsigned int uint32_t;
 #define LPSTR                char *
 #define INVALID_HANDLE_VALUE 0xFFFFFFFF
 typedef enum { FALSE = 0, TRUE } BOOL;
-#endif // WIN32
+#endif // _WIN32
 
 #endif //_STLINK_TYPE_H
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
