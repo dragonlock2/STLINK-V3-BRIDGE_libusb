@@ -59,7 +59,8 @@ const uint16_t STLINK_V3_PID[] = {
     0x374E, // STLINK-V3E
     0x374F, // STLINK-V3S
     0x3753, // STLINK-V3 Dual VCP
-    0x3754  // STLINK-V3 no MSD
+    0x3754, // STLINK-V3 no MSD
+    0x3757  // STLINK-V3PWR
 };
 
 /* Class -------------------------------------------------------------------- */
