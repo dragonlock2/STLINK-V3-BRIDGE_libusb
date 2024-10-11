@@ -174,19 +174,12 @@ STLinkInterface::STLink_GetDeviceInfo2(TEnumStlinkInterface IfId,
                     handle, desc.iSerialNumber, (unsigned char *)string,
                     sizeof(string));
                 if (ret > 0) {
-#if __GNUC__
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat-truncation"
-#endif
                     // We are intentionally truncating since for STLink devices,
                     // the string descriptor is known to be no more than 31
                     // bytes, despite the fact that a USB string descriptor may
                     // up to 255 bytes long.
                     ret = snprintf(pInfo->EnumUniqueId,
                                    sizeof(pInfo->EnumUniqueId), "%s", string);
-#if __GNUC__
-#pragma GCC diagnostic pop
-#endif
                 }
             }
             libusb_close(handle);
